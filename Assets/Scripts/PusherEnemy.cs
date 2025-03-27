@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class PusherEnemy : BaseEnemy
+public class PusherEnemy : BaseEnemy, ISpawnable
 {
     public float moveSpeed = 3f;
     public float pushForce = 10f;
@@ -33,5 +33,10 @@ public class PusherEnemy : BaseEnemy
                 targetRb.AddForce(pushDir * pushForce, ForceMode.Impulse);
             }
         }
+    }
+
+    public void OnSpawn()
+    {
+        Debug.Log(gameObject.name + " spawned");
     }
 }

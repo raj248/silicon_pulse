@@ -36,4 +36,9 @@ public class InputManager : MonoBehaviour, IGameManager
         if (Input.GetKeyDown(KeyCode.Q)) OnHeavyAttack?.Invoke();
         if (Input.GetKeyDown(KeyCode.E)) OnRangedAttack?.Invoke();
     }
+    
+    public void TriggerDash()
+    {
+        OnDash?.Invoke();
+    }
 }
