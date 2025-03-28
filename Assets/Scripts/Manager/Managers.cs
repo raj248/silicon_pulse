@@ -6,8 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(InputManager))]
 
 public class Managers : MonoBehaviour {
-    public static PlayerManager Player {get; private set;}
-    public static InputManager Input {get; private set;}
+    public static PlayerManager Player {get; set;}
+    public static InputManager Input {get; set;}
+    public static GameManager Game {get; set;}
+    public static EnemyManager Enemy  {get; set;}
+    public static UIManager UI {get; set;}
+    
     private List<IGameManager> _startSequence;
     
     public static bool IsInitialized { get; private set; }
@@ -15,10 +19,16 @@ public class Managers : MonoBehaviour {
     void Awake() {
         Player = GetComponent<PlayerManager>();
         Input = GetComponent<InputManager>();
+        Game = FindAnyObjectByType<GameManager>();
+        Enemy = FindAnyObjectByType<EnemyManager>();
+        UI = FindAnyObjectByType<UIManager>();
 
         _startSequence = new List<IGameManager>();
         _startSequence.Add(Player);
         _startSequence.Add(Input);
+        _startSequence.Add(Game);
+        _startSequence.Add(Enemy);
+        _startSequence.Add(UI);
 
         StartCoroutine(StartupManagers());
     }

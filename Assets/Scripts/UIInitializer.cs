@@ -1,16 +1,26 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 public class UIInitializer : MonoBehaviour
 {
     [SerializeField] private GameObject dashButton;
-    [SerializeField] private GameObject interactionButton;
+    [SerializeField] private GameObject gameOverPanel;
 
-    private void Start()
+    private IEnumerator WaitForUIManager()
     {
+        while (!Managers.IsInitialized) yield return null;
+
         UIManager.Instance.RegisterUIElement("Dash", dashButton);
-        UIManager.Instance.RegisterUIElement("Interact", interactionButton);
+        UIManager.Instance.RegisterUIElement("GameOverPanel",gameOverPanel);
+
 
         // Start with only dash visible
         UIManager.Instance.Show("Dash");
-        UIManager.Instance.Hide("Interact");
+        UIManager.Instance.Hide("GameOverPanel");
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(WaitForUIManager());
     }
 }

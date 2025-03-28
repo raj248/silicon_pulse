@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour, IGameManager
 {
+    public ManagerStatus Status { get; private set; }
     public static UIManager Instance { get; private set; }
 
     private readonly Dictionary<string, GameObject> _uiElements = new();
+
 
     private void Awake()
     {
@@ -16,6 +18,12 @@ public class UIManager : MonoBehaviour
         }
 
         Instance = this;
+    }
+
+    public void Startup()
+    {
+        Status = ManagerStatus.Started;
+
     }
 
     /// <summary>
@@ -43,6 +51,7 @@ public class UIManager : MonoBehaviour
     {
         if (_uiElements.TryGetValue(key, out var element))
             element.SetActive(false);
+        Debug.Log("Hiding "+ key);
     }
 
     /// <summary>
@@ -53,6 +62,7 @@ public class UIManager : MonoBehaviour
         if (_uiElements.TryGetValue(key, out var element))
             element.SetActive(!element.activeSelf);
     }
+
 
     /// <summary>
     /// Hide all registered UI elements

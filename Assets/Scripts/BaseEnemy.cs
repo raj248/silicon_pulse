@@ -7,8 +7,11 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
 
     public virtual void Initialize(Transform target)
     {
-        this.Target = target;
+        Target = target;
     }
 
     public abstract void PerformAction();
+    public abstract void OnHit();
+    public abstract void OnSpawn();
+    public abstract void OnDeath();
 }

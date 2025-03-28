@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class PusherEnemy : BaseEnemy, ISpawnable
+public class PusherEnemy : BaseEnemy
 {
     public float moveSpeed = 3f;
     public float pushForce = 10f;
@@ -9,9 +9,6 @@ public class PusherEnemy : BaseEnemy, ISpawnable
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-
-        // Register with the manager if needed
-        FindAnyObjectByType<EnemyManager>()?.RegisterEnemy(this);
     }
 
     public override void PerformAction()
@@ -21,6 +18,23 @@ public class PusherEnemy : BaseEnemy, ISpawnable
         Vector3 dir = (Target.position - transform.position).normalized;
         _rb.MovePosition(transform.position + dir * (moveSpeed * Time.fixedDeltaTime));
     }
+
+    public override void OnHit()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnSpawn()
+    {
+        EnemyManager.Instance.RegisterEnemy(this);
+    }
+    public override void OnDeath()
+    {
+        EnemyManager.EnemyPool.ReturnEnemy(gameObject); // Return to pool instead of destroying
+        EnemyManager.Instance.UnregisterEnemy(this);
+        Debug.Log(gameObject.name + " Despawned");
+    }
+
 
     void OnCollisionEnter(Collision other)
     {
@@ -33,10 +47,5 @@ public class PusherEnemy : BaseEnemy, ISpawnable
                 targetRb.AddForce(pushDir * pushForce, ForceMode.Impulse);
             }
         }
-    }
-
-    public void OnSpawn()
-    {
-        Debug.Log(gameObject.name + " spawned");
     }
 }

@@ -1,8 +1,5 @@
 ﻿NEXT:
 ✅ Core Wrap-Up Tasks:
-Game Over Screen
-
-Trigger Game Over When Player Falls
 
 Display Score (Time Survived + Enemies Defeated)
 
@@ -31,3 +28,6 @@ implement attacks
 
 calibrate camera orbit restraint
 
+Game Over Screen
+
+Trigger Game Over When Player Falls

@@ -1,17 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Spawner Settings")]
-    [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private float timeBetweenWaves = 5f;
     [SerializeField] private int enemiesPerWave = 5;
     [SerializeField] private float spawnDelay = 0.5f;
+    private EnemyPool _enemyPool;
 
     private int _currentWave;
     private bool _isSpawning;
+
+    private void Start()
+    {
+        _enemyPool = GetComponent<EnemyPool>();
+    }
 
     public void StartSpawning()
     {
@@ -44,12 +51,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        var prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-        var spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        GameObject enemy = _enemyPool.GetEnemy(); // Get from pool
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-        GameObject enemy = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
+        enemy.transform.position = spawnPoint.position;
+        enemy.transform.rotation = spawnPoint.rotation;
 
-        if (enemy.TryGetComponent<ISpawnable>(out var spawnable))
+        if (enemy.TryGetComponent<IEnemy>(out var spawnable))
             spawnable.OnSpawn();
     }
 }
