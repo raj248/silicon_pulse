@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FallDetector : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         // Handle Player Fall
         if (other.CompareTag("Player"))

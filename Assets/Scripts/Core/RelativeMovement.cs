@@ -5,7 +5,7 @@ public class RelativeMovement : MonoBehaviour
 {
     [SerializeField] Transform target;
 
-    public float moveSpeed = 6.0f;
+    // public float moveSpeed = 6.0f;
     public float jumpSpeed = 15.0f;
     public float maxSpeed = 10.0f;  // 🔹 Set a speed limit
     public float groundCheckDistance = 1.1f; 

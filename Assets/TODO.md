@@ -7,7 +7,6 @@ Display Score (Time Survived + Enemies Defeated)
 
 Main Menu to Start Game
 
-Reload Game on Game Over
 
 🧠 Bonus Suggestions:
 Pause Menu (with Resume, Main Menu, Quit)
@@ -20,7 +19,7 @@ Simple Settings UI (sound toggle at least)
 
 Save High Score (locally using PlayerPrefs)
 
-sling
+sling ability
 Done:
 dash
 fix dash direction
@@ -31,3 +30,4 @@ calibrate camera orbit restraint
 Game Over Screen
 
 Trigger Game Over When Player Falls
+Reload Game on Game Over
