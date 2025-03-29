@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerManager))]
 [RequireComponent(typeof(InputManager))]
 
 public class Managers : MonoBehaviour {
@@ -11,17 +10,19 @@ public class Managers : MonoBehaviour {
     public static GameManager Game {get; set;}
     public static EnemyManager Enemy  {get; set;}
     public static UIManager UI {get; set;}
+    public static ScoreManager Score {get; set;}
     
     private List<IGameManager> _startSequence;
     
     public static bool IsInitialized { get; private set; }
 	
     void Awake() {
-        Player = GetComponent<PlayerManager>();
+        Player = FindAnyObjectByType<PlayerManager>();
         Input = GetComponent<InputManager>();
         Game = FindAnyObjectByType<GameManager>();
         Enemy = FindAnyObjectByType<EnemyManager>();
         UI = FindAnyObjectByType<UIManager>();
+        Score = FindAnyObjectByType<ScoreManager>();
 
         _startSequence = new List<IGameManager>();
         _startSequence.Add(Player);
@@ -29,6 +30,7 @@ public class Managers : MonoBehaviour {
         _startSequence.Add(Game);
         _startSequence.Add(Enemy);
         _startSequence.Add(UI);
+        _startSequence.Add(Score);
 
         StartCoroutine(StartupManagers());
     }

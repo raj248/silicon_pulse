@@ -1,15 +1,15 @@
 ﻿NEXT:
 ✅ Core Wrap-Up Tasks:
 
-Display Score (Time Survived + Enemies Defeated)
 
-(Optional) 3 Lives + Respawn System
 
 Main Menu to Start Game
 
 
 🧠 Bonus Suggestions:
 Pause Menu (with Resume, Main Menu, Quit)
+
+Show # of Lives Remaining
 
 Basic Sound Effects / Music (for dash, hits, game over)
 
@@ -31,3 +31,5 @@ Game Over Screen
 
 Trigger Game Over When Player Falls
 Reload Game on Game Over
+Display Score (Time Survived + Enemies Defeated)
+(Optional) 3 Lives + Respawn System

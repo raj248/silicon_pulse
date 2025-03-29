@@ -7,7 +7,8 @@ public class FallDetector : MonoBehaviour
         // Handle Player Fall
         if (other.CompareTag("Player"))
         {
-            UIManager.Instance.Show("GameOverPanel");
+            // GameManager.Instance.GameOver();
+            PlayerManager.Instance.OnPlayerDeath();
             return;
         }
 

@@ -26,6 +26,11 @@ public class EnemySpawner : MonoBehaviour
             StartCoroutine(SpawnWaves());
     }
 
+    public void StopSpawning()
+    {
+        StopCoroutine(SpawnWaves());
+    }
+
     private IEnumerator SpawnWaves()
     {
         _isSpawning = true;

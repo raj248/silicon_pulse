@@ -32,6 +32,7 @@ public class PusherEnemy : BaseEnemy
     {
         EnemyManager.EnemyPool.ReturnEnemy(gameObject); // Return to pool instead of destroying
         EnemyManager.Instance.UnregisterEnemy(this);
+        ScoreManager.Instance.RegisterEnemyDeath();
         Debug.Log(gameObject.name + " Despawned");
     }
 

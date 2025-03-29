@@ -19,9 +19,8 @@ public class SpawnTrigger : MonoBehaviour
     private IEnumerator StartSpawn()
     {
         while (!Managers.IsInitialized) yield return null;
-
-        while (EnemyManager.Instance == null || EnemyManager.Spawner == null) yield return null;
-
+        GameManager.Instance.StartGame();
         EnemyManager.Spawner.StartSpawning();
+        gameObject.SetActive(false);
     }
 }
