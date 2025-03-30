@@ -1,9 +1,8 @@
 ﻿NEXT:
-✅ Core Wrap-Up Tasks:
+Basic Sound Effects / Music (for dash, hits, game over)
 
 
 
-Main Menu to Start Game
 
 
 🧠 Bonus Suggestions:
@@ -11,7 +10,6 @@ Pause Menu (with Resume, Main Menu, Quit)
 
 Show # of Lives Remaining
 
-Basic Sound Effects / Music (for dash, hits, game over)
 
 Player Feedback UI (like screen flash on hit, dash cooldown indicator)
 
@@ -33,3 +31,17 @@ Trigger Game Over When Player Falls
 Reload Game on Game Over
 Display Score (Time Survived + Enemies Defeated)
 (Optional) 3 Lives + Respawn System
+Main Menu to Start Game
+✅ Core Wrap-Up Tasks:
+
+DASH SPECIAL EFFECT
+6. Dash Ring / Energy Wave
+   Creates an expanding circular energy wave when dashing.
+
+Adds a sense of power to the movement.
+
+Implementation Options:
+
+A scaled-up ring sprite with transparency.
+
+A 3D mesh with a dissolve shader expanding outward.

@@ -31,7 +31,7 @@ public class OrbitCamera : MonoBehaviour
         // _rotY += mouseX;  
         // _rotX = Mathf.Clamp(_rotX - mouseY, -50f, 70f); // Prevent extreme angles  
       
-        _rotY += fjsLeft.Horizontal*(-1f);  
+        _rotY += fjsLeft.Horizontal;  
         _rotX = Mathf.Clamp(_rotX - fjsLeft.Vertical*(-1f), 0f, 40f); // Prevent extreme angles  
 
       
